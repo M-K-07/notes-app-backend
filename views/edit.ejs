@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="main min-h-screen bg-zinc-900 p-20">
+      <a href="/view" class="text-blue-400">View My notes</a>
+      <h1 class="text-zinc-300 text-4xl tracking-tight my-5">Update Note</h1>
+      <form action="/update/<%=note._id%>" method="post" class="form">
+        <input
+          class="block bg-zinc-800 rounded-md w-full p-3 text-white outline-none"
+          type="text"
+          placeholder="Title"
+          name="title"
+          value="<%= note.title%>"
+        />
+        
+        <textarea
+          class="block bg-zinc-800 rounded-md resize-none mt-[20px] w-full min-h-[100px] p-3 text-white outline-none"
+          placeholder="Leave your note here..."
+          name="note"
+        ><%= note.note %></textarea>
+        <input type="submit" class="bg-slate-700 cursor-pointer text-slate-400 px-3 py-2 rounded-md mt-[20px] hover:bg-slate-400 hover:text-black" value="Update Note">
+      </form>
+     
+    </div>
+  </body>
+</html>
