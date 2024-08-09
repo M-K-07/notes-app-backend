@@ -1,5 +1,6 @@
+require('dotenv').config();
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/NotesDB')
+mongoose.connect(process.env.MONGODB_URL);
 
 const noteSchema=mongoose.Schema({
     title:String,
@@ -7,3 +8,5 @@ const noteSchema=mongoose.Schema({
 })
 
 module.exports=mongoose.model('Notes',noteSchema)
+
+// console.log(process.env.MONGODB_URL)
