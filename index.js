@@ -6,7 +6,6 @@ const noteModel=require('./models/notes')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.set('view engine', 'ejs')
-// app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/',(req,res)=>{
     res.render('index')
@@ -32,7 +31,6 @@ app.get('/delete/:noteID',async (req,res)=>{
 app.get('/edit/:noteID',async (req,res)=>{
     let note=await noteModel.findOne({_id:req.params.noteID})
     res.render('edit',{note})
-    console.log(note)
 })
 app.post('/update/:noteID', async (req,res)=>{
     let noteID=req.params.noteID

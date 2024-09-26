@@ -6,29 +6,30 @@
     <title>Notes</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <div class="min-h-screen bg-zinc-900 p-10 text-white">
-        <a href="/" class="text-blue-400">Go Back</a>
-        <div class="notes lg:flex flex-col">
-          <% if(notes.length>0){%>
-
-            <% notes.forEach((note)=>{ %>
-              <div class="bg-zinc-800 mt-10 px-5 py-3 rounded-md">
-                <h3 class="text-zinc-400 mb-5 text-xl"><%=note.title%></h3>
-                <p class="text-white"> <%= note.note %></p>
-                <div class="flex gap-10 justify-between pt-3 items-center">
-                  <a href="/edit/<%=note._id%>" class="text-slate-600">Edit Note</a>
-                  <a href="/delete/<%=note._id%>" class="text-red-600">Delete Note</a>
+  <body class="bg-zinc-900 text-white">
+    <div class="min-h-screen px-4 lg:px-10 py-10 lg:py-16">
+      <a href="/" class="text-blue-400 mb-4 block">Go Back</a>
+      <div class="notes flex flex-col lg:flex-row lg:flex-wrap gap-6 lg:gap-10">
+        <% if(notes.length>0){%>
+          <% notes.forEach((note)=>{ %>
+            <div class="bg-zinc-800 w-full p-4 rounded-md shadow-md">
+              <div class="flex lg:flex-row flex-col justify-between gap-3 lg:items-center mb-3">
+                <h3 class="text-zinc-400 text-lg lg:text-xl"><%= note.title %></h3>
+                <div class="flex gap-4 lg:gap-10 mb-4">
+                  <a href="/edit/<%= note._id %>" class="text-slate-600">Edit Note</a>
+                  <a href="/delete/<%= note._id %>" class="text-red-600">Delete Note</a>
+                </div>
               </div>
-              </div>
-              <% }) %>
+              <pre class="text-white w-full overflow-x-auto whitespace-pre-wrap"><%= note.note %></pre>
             </div>
-          <% } else{ %>
-            <div class="flex flex-col gap-10">
-              <p class="text-zinc-600 text-xl block mt-5">No notes yet..</p>
-              <a href="/" class="text-white tracking-tight cursor-pointer bg-blue-800 p-2 w-fit rounded-xl">Create Notes</a>
-            </div>
-         <% }%>
+          <% }) %>
+        <% } else { %>
+          <div class="flex flex-col items-center gap-6">
+            <p class="text-zinc-600 text-xl">No notes yet..</p>
+            <a href="/" class="text-white bg-blue-800 px-4 py-2 rounded-xl">Create Notes</a>
+          </div>
+        <% } %>
+      </div>
     </div>
   </body>
 </html>
